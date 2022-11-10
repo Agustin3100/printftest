@@ -1,31 +1,26 @@
-#include "main.h"
-#include <stdio.h>
-#include<string.h>
-/**
-  * get_op_func - puntero a una funcion.
-  * @s: string a comparar.
-  * Return: NULL en caso de fallo.
+#include"main.h"
+#include<stdio.h>
+#include<stdarg.h>
+/***
+  *
   */
-int (*op_func(const char *format))(va_list)
-
+int (*op_func(const char *op))(va_list)
 {
-	int i;
-
-	op_t ops[4] = {
-		{"c", _putchar},
-		{"s", printstr},
-		{"%", printper},
-		{NULL, NULL}
-	};
-	
-
-	for (i = 0; ops[i].op != NULL; i++)
-	{
-		if (*(ops[i].op) == *format)
-		{
-			return (ops[i].f);
-		}
+		int i; 
 		
-	}
-	return (0);
+		op_t ops[]= {
+
+			{'s', printstr},
+			{'c', printchar},
+			{'%', printper},
+			
+			};
+
+		for (i = 0; ops[i].p != '\0'; i++)
+		{
+			if (ops[i].p == *op)				
+				return (ops[i].f);
+		}
+		return(NULL);
 }
+

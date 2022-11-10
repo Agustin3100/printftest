@@ -7,20 +7,20 @@
 
 
 int _printf(const char *format, ...);
-int (*op_func(const char *format))(va_list);
+int (*op_func(const char *op))(va_list);
 
 /**
  * struct func - struct for specifier to print
- * @t: charecter to compare
+ * @op: charecter to compare
  * @f: function que devuelve
  */
 typedef struct func
 {
-	char *op;
+    char p;
 	int (*f)(va_list);
 } op_t;
-
-int _putchar(va_list);
+ int printchar(va_list ap);
+int _putchar(char c);
 int printstr(va_list);
 int printper(va_list);
 

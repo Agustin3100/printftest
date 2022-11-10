@@ -9,7 +9,7 @@
 */
 int _putchar(char c)
 {
-return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
 
 
@@ -22,43 +22,43 @@ return (write(1, &c, 1));
 
 int printchar(va_list ap)
 {
-	char c = (char)va_arg(ap, int);
+	char c = va_arg(ap, int); /** se podria hacer una conversion forzada a (char)*/
 
-	int count = 0;
-
-	if (c)
-	{
-		count = write(1, &c, 1);
-		return (count);
-	}
-
-	return (0);
+	return (write(1, &c, 1));/** si el proximo argumento es nulo sale del programa*/
 }
 
+
+
+/**
+  *
+  *
+  *
 int printper(va_list ap)
 {
-(void)ap;
 
-write(1, "%", 1);
+	write(1, "%", 1);
 
-return (1);
-}
+	return (1);
+}**/
 
 int printstr(va_list ap)
 {
-int i;
-int count = 0;
-char *str;
+	int i;
+	int count = 0;
+	char *str;
 
-str = va_arg(ap, char *);
-if (str == NULL)
-return (-1);
+	str = va_arg(ap, char *);
+	if (str == NULL)
+	{
+		return (-1);
+	}
 
-while (str[i])
-{
-count = write(1, &str[i], 1);
-i = i + 1;
-}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		count += 1;
+		i++;
+	}
 
-return (count);
+	return (count);
 }
